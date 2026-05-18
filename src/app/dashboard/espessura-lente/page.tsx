@@ -137,12 +137,12 @@ export default function EspessuraLentePage() {
                   <div key={result.material.id} className="flex items-center gap-3">
                     <div className="w-28 shrink-0 text-right">
                       <p className="text-sm font-medium">{result.material.name}</p>
-                      <p className="text-[10px] text-muted-foreground">Indice {result.material.index}</p>
+                      <p className="text-micro text-muted-foreground">Indice {result.material.index}</p>
                     </div>
                     <div className="flex-1 relative">
                       <div className="h-8 rounded-md bg-muted/30 overflow-hidden">
                         <div
-                          className="h-full rounded-md transition-all duration-500 flex items-center justify-end pr-2"
+                          className="h-full rounded-md transition-all duration-slow flex items-center justify-end pr-2"
                           style={{ width: `${barWidth}%`, backgroundColor: colors[i], opacity: 0.7 }}
                         >
                           <span className="text-xs font-bold text-white drop-shadow-sm">

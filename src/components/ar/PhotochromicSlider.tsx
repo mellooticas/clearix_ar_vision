@@ -86,7 +86,7 @@ export function PhotochromicSlider({ onColorChange }: PhotochromicSliderProps) {
         />
         <div className="flex justify-between mt-1">
           {UV_LABELS.map((label) => (
-            <span key={label.value} className="text-[10px] text-muted-foreground">
+            <span key={label.value} className="text-micro text-muted-foreground">
               {label.label}
             </span>
           ))}
@@ -96,7 +96,7 @@ export function PhotochromicSlider({ onColorChange }: PhotochromicSliderProps) {
       {/* Color preview */}
       <div className="flex items-center gap-3">
         <div
-          className="h-12 w-12 rounded-full border-2 border-border transition-colors duration-500"
+          className="h-12 w-12 rounded-full border-2 border-border transition-colors duration-slow"
           style={{ backgroundColor: currentColor }}
         />
         <div className="text-sm">

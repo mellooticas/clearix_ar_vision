@@ -97,7 +97,7 @@ export function CaptureGallery({ captures, onRemove, className }: CaptureGallery
           {/* Product name */}
           {capture.productName && (
             <div className="absolute bottom-0 left-0 right-0 bg-black/60 px-1.5 py-0.5">
-              <p className="truncate text-[10px] text-white">{capture.productName}</p>
+              <p className="truncate text-micro text-white">{capture.productName}</p>
             </div>
           )}
         </div>

@@ -59,9 +59,9 @@ export default function LentesProgressivasPage() {
               className="w-full accent-primary"
             />
             <div className="flex justify-between mt-1">
-              <span className="text-[10px] text-muted-foreground">+0.75</span>
-              <span className="text-[10px] text-muted-foreground">+2.00</span>
-              <span className="text-[10px] text-muted-foreground">+3.50</span>
+              <span className="text-micro text-muted-foreground">+0.75</span>
+              <span className="text-micro text-muted-foreground">+2.00</span>
+              <span className="text-micro text-muted-foreground">+3.50</span>
             </div>
           </div>
 

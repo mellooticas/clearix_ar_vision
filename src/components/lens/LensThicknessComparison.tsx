@@ -35,7 +35,7 @@ export function LensThicknessComparison({ comparison, className }: LensThickness
               )}
             >
               {isBest && (
-                <span className="absolute -top-2.5 left-3 rounded-full bg-primary px-2 py-0.5 text-[10px] font-semibold text-primary-foreground">
+                <span className="absolute -top-2.5 left-3 rounded-full bg-primary px-2 py-0.5 text-micro font-semibold text-primary-foreground">
                   Mais fina
                 </span>
               )}

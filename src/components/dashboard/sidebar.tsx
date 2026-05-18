@@ -132,7 +132,7 @@ export function DashboardSidebar({ open = false, onClose }: DashboardSidebarProp
             <ClearixIcon size={36} accent="#D946EF" />
             {!collapsed && (
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.15em] opacity-50">Clearix</p>
+                <p className="text-micro font-semibold uppercase tracking-[0.15em] opacity-50">Clearix</p>
                 <p className="text-lg font-black tracking-tight">AR &amp; Vision</p>
               </div>
             )}
@@ -153,7 +153,7 @@ export function DashboardSidebar({ open = false, onClose }: DashboardSidebarProp
           {visibleSections.map((section) => (
             <div key={section.id} className="mt-5 first:mt-0">
               {!collapsed && (
-                <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-wider opacity-40">
+                <p className="mb-2 px-3 text-micro font-semibold uppercase tracking-wider opacity-40">
                   {section.label}
                 </p>
               )}
@@ -224,7 +224,7 @@ export function DashboardSidebar({ open = false, onClose }: DashboardSidebarProp
             title={collapsed ? profile?.nome || 'Usuario' : undefined}
           >
             <div
-              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[11px] font-bold"
+              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-micro font-bold"
               style={{ backgroundColor: 'var(--sidebar-primary)', color: 'var(--sidebar-primary-foreground)' }}
             >
               {userInitials}
@@ -244,15 +244,15 @@ export function DashboardSidebar({ open = false, onClose }: DashboardSidebarProp
   return (
     <>
       {/* Mobile overlay */}
-      <div className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-300 ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`fixed inset-0 z-50 lg:hidden transition-opacity duration-base ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-        <div className={`fixed inset-y-0 left-0 w-72 transform transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className={`fixed inset-y-0 left-0 w-72 transform transition-transform duration-base ease-in-out ${open ? 'translate-x-0' : '-translate-x-full'}`}>
           {sidebarInner(true)}
         </div>
       </div>
 
       {/* Desktop sidebar */}
-      <div className={`hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col transition-all duration-300 ${isCollapsed ? 'lg:w-18' : 'lg:w-64'}`}>
+      <div className={`hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col transition-all duration-base ${isCollapsed ? 'lg:w-18' : 'lg:w-64'}`}>
         {sidebarInner(false)}
       </div>
     </>

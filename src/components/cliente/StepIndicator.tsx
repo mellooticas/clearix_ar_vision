@@ -36,7 +36,7 @@ export function StepIndicator({ currentStep, completedSteps, className }: StepIn
               />
               <span
                 className={cn(
-                  'mt-1 text-[10px]',
+                  'mt-1 text-micro',
                   isCurrent ? 'font-semibold text-primary' : 'text-muted-foreground',
                 )}
               >

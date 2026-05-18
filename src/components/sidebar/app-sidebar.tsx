@@ -125,7 +125,7 @@ export function AppSidebar() {
         </span>
         {!inCollapsed && <span>{item.label}</span>}
         {!inCollapsed && item.badge && (
-          <span className="ml-auto rounded-full px-2 py-0.5 text-[10px] font-semibold" style={{ backgroundColor: 'var(--sidebar-primary)', color: 'var(--sidebar-primary-foreground)' }}>
+          <span className="ml-auto rounded-full px-2 py-0.5 text-micro font-semibold" style={{ backgroundColor: 'var(--sidebar-primary)', color: 'var(--sidebar-primary-foreground)' }}>
             {item.badge}
           </span>
         )}
@@ -177,11 +177,11 @@ export function AppSidebar() {
           </span>
           <span className="flex-1 text-left">{item.label}</span>
           <span className="text-xs opacity-50">{children.length}</span>
-          <svg className={cn('h-4 w-4 transition-transform duration-200', isExpanded(item.id) ? 'rotate-90' : '')} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className={cn('h-4 w-4 transition-transform duration-base', isExpanded(item.id) ? 'rotate-90' : '')} fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
-        <div className={cn('overflow-hidden transition-all duration-300 ease-in-out', isExpanded(item.id) ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0')}>
+        <div className={cn('overflow-hidden transition-all duration-base ease-in-out', isExpanded(item.id) ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0')}>
           <div className="mt-1 space-y-0.5 pl-4">
             {children.map(child => {
               const ChildIcon = getIcon(child.icon)
@@ -227,7 +227,7 @@ export function AppSidebar() {
           <ClearixIcon size={36} accent={APP_ACCENT} />
           {!isCollapsed && (
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.15em] opacity-50">{APP_KICKER}</p>
+              <p className="text-micro font-semibold uppercase tracking-[0.15em] opacity-50">{APP_KICKER}</p>
               <p className="text-lg font-black tracking-tight">{APP_TITLE}</p>
             </div>
           )}
@@ -244,7 +244,7 @@ export function AppSidebar() {
         {sections.map(section => (
           <div key={section.id} className="mb-4">
             {!isCollapsed && (
-              <p className="mb-2 px-3 text-[11px] font-semibold uppercase tracking-wider opacity-40">
+              <p className="mb-2 px-3 text-micro font-semibold uppercase tracking-wider opacity-40">
                 {section.label}
               </p>
             )}
@@ -267,7 +267,7 @@ export function AppSidebar() {
           {!isCollapsed && <span>{isDark ? 'Modo Claro' : 'Modo Escuro'}</span>}
         </button>
         <div className={cn('flex items-center gap-3 rounded-lg px-3 py-2', isCollapsed && 'justify-center px-0')} title={isCollapsed ? (profile?.nome || 'Usuario') : undefined}>
-          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[11px] font-bold" style={{ backgroundColor: 'var(--sidebar-primary)', color: 'var(--sidebar-primary-foreground)' }}>
+          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-micro font-bold" style={{ backgroundColor: 'var(--sidebar-primary)', color: 'var(--sidebar-primary-foreground)' }}>
             {userInitials}
           </div>
           {!isCollapsed && (
@@ -284,15 +284,15 @@ export function AppSidebar() {
   return (
     <>
       {/* Mobile overlay */}
-      <div className={cn('fixed inset-0 z-50 lg:hidden transition-opacity duration-300', mobileOpen ? 'opacity-100' : 'opacity-0 pointer-events-none')}>
+      <div className={cn('fixed inset-0 z-50 lg:hidden transition-opacity duration-base', mobileOpen ? 'opacity-100' : 'opacity-0 pointer-events-none')}>
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={closeMobile} />
-        <div className={cn('fixed inset-y-0 left-0 w-72 transform transition-transform duration-300 ease-in-out', mobileOpen ? 'translate-x-0' : '-translate-x-full')}>
+        <div className={cn('fixed inset-y-0 left-0 w-72 transform transition-transform duration-base ease-in-out', mobileOpen ? 'translate-x-0' : '-translate-x-full')}>
           {sidebarContent(false, true)}
         </div>
       </div>
 
       {/* Desktop sidebar */}
-      <div className={cn('hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col transition-all duration-300', collapsed ? 'lg:w-[72px]' : 'lg:w-64')}>
+      <div className={cn('hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col transition-all duration-base', collapsed ? 'lg:w-[72px]' : 'lg:w-64')}>
         {sidebarContent(collapsed)}
       </div>
     </>

@@ -39,7 +39,7 @@ export default function SimuladorTratamentosPage() {
                     <p className="text-xs font-medium">Sem Tratamento</p>
                   </div>
                 </div>
-                <div className="absolute bottom-2 left-2 rounded bg-black/60 px-2 py-0.5 text-[10px] text-white font-medium">
+                <div className="absolute bottom-2 left-2 rounded bg-black/60 px-2 py-0.5 text-micro text-white font-medium">
                   Antes
                 </div>
               </div>
@@ -47,7 +47,7 @@ export default function SimuladorTratamentosPage() {
               {/* With treatment */}
               <div className="relative border-l border-border">
                 <div
-                  className="aspect-[4/3] bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center transition-all duration-500"
+                  className="aspect-[4/3] bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center transition-all duration-slow"
                   style={{ filter: coating.cssFilter || 'none' }}
                 >
                   <div className="text-center text-white/80">
@@ -55,7 +55,7 @@ export default function SimuladorTratamentosPage() {
                     <p className="text-xs font-medium">Com Tratamento</p>
                   </div>
                 </div>
-                <div className="absolute bottom-2 right-2 rounded bg-primary/80 px-2 py-0.5 text-[10px] text-white font-medium">
+                <div className="absolute bottom-2 right-2 rounded bg-primary/80 px-2 py-0.5 text-micro text-white font-medium">
                   Depois
                 </div>
               </div>

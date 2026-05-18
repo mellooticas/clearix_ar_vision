@@ -41,7 +41,7 @@ export function FaceSilhouette({ aligned = false, measuring = false, className }
           stroke={strokeColor}
           strokeWidth={strokeWidth}
           strokeDasharray={dashArray}
-          className="transition-all duration-300"
+          className="transition-all duration-base"
         />
 
         {/* Neck */}
@@ -51,7 +51,7 @@ export function FaceSilhouette({ aligned = false, measuring = false, className }
           strokeWidth={strokeWidth}
           strokeDasharray={dashArray}
           strokeLinecap="round"
-          className="transition-all duration-300"
+          className="transition-all duration-base"
         />
         <path
           d="M 180 230 Q 180 255 195 270 Q 210 285 230 295"
@@ -59,7 +59,7 @@ export function FaceSilhouette({ aligned = false, measuring = false, className }
           strokeWidth={strokeWidth}
           strokeDasharray={dashArray}
           strokeLinecap="round"
-          className="transition-all duration-300"
+          className="transition-all duration-base"
         />
 
         {/* Shoulders */}
@@ -69,7 +69,7 @@ export function FaceSilhouette({ aligned = false, measuring = false, className }
           strokeWidth={strokeWidth}
           strokeDasharray={dashArray}
           strokeLinecap="round"
-          className="transition-all duration-300"
+          className="transition-all duration-base"
         />
         <path
           d="M 230 295 Q 260 310 285 340"
@@ -77,7 +77,7 @@ export function FaceSilhouette({ aligned = false, measuring = false, className }
           strokeWidth={strokeWidth}
           strokeDasharray={dashArray}
           strokeLinecap="round"
-          className="transition-all duration-300"
+          className="transition-all duration-base"
         />
 
         {/* Eye level line */}
@@ -89,7 +89,7 @@ export function FaceSilhouette({ aligned = false, measuring = false, className }
           stroke={eyeColor}
           strokeWidth={1.5}
           strokeDasharray="4 3"
-          className="transition-all duration-300"
+          className="transition-all duration-base"
         />
 
         {/* Eye position markers (circles where pupils should be) */}
@@ -100,7 +100,7 @@ export function FaceSilhouette({ aligned = false, measuring = false, className }
           stroke={eyeColor}
           strokeWidth={1.5}
           fill="none"
-          className="transition-all duration-300"
+          className="transition-all duration-base"
         />
         <circle
           cx="182"
@@ -109,7 +109,7 @@ export function FaceSilhouette({ aligned = false, measuring = false, className }
           stroke={eyeColor}
           strokeWidth={1.5}
           fill="none"
-          className="transition-all duration-300"
+          className="transition-all duration-base"
         />
 
         {/* Pupil dots */}
@@ -118,14 +118,14 @@ export function FaceSilhouette({ aligned = false, measuring = false, className }
           cy="135"
           r="2"
           fill={eyeColor}
-          className="transition-all duration-300"
+          className="transition-all duration-base"
         />
         <circle
           cx="182"
           cy="135"
           r="2"
           fill={eyeColor}
-          className="transition-all duration-300"
+          className="transition-all duration-base"
         />
 
         {/* PD measurement arrow (only when measuring) */}
@@ -177,7 +177,7 @@ export function FaceSilhouette({ aligned = false, measuring = false, className }
           stroke={aligned ? 'rgba(16,185,129,0.3)' : 'rgba(255,255,255,0.15)'}
           strokeWidth={1}
           strokeDasharray="3 3"
-          className="transition-all duration-300"
+          className="transition-all duration-base"
         />
       </svg>
     </div>

@@ -73,7 +73,7 @@ export function LensCrossSection({
           stroke={color} strokeWidth={0.8} strokeDasharray="2 1"
         />
       </svg>
-      <div className="flex justify-between w-full max-w-20 text-[10px] text-muted-foreground mt-1">
+      <div className="flex justify-between w-full max-w-20 text-micro text-muted-foreground mt-1">
         <span>{edgeThickness}mm</span>
         <span>{centerThickness}mm</span>
       </div>

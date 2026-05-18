@@ -31,7 +31,7 @@ export function FitScoreBadge({ result, compact, className }: FitScoreBadgeProps
     return (
       <div className={cn('flex items-center gap-1.5 rounded-full px-2.5 py-1', colors.bg, 'bg-opacity-20', className)}>
         <span className={cn('text-xs font-bold', colors.text)}>{result.score}</span>
-        <span className="text-[10px] text-muted-foreground">{CATEGORY_LABELS[result.category]}</span>
+        <span className="text-micro text-muted-foreground">{CATEGORY_LABELS[result.category]}</span>
       </div>
     )
   }
@@ -66,7 +66,7 @@ export function FitScoreBadge({ result, compact, className }: FitScoreBadgeProps
         <p className={cn('text-xs font-semibold', colors.text)}>
           {CATEGORY_LABELS[result.category]}
         </p>
-        <p className="text-[10px] text-muted-foreground mt-0.5">
+        <p className="text-micro text-muted-foreground mt-0.5">
           {result.recommendation}
         </p>
       </div>

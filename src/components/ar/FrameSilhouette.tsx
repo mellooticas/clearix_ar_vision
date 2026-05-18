@@ -232,7 +232,7 @@ function FrontalSilhouette({ stroke, strokeWidth, dashArray, frameShape }: Silho
   const isCatEye = frameShape === 'cat_eye'
 
   return (
-    <g className="transition-all duration-300">
+    <g className="transition-all duration-base">
       {/* Lenses */}
       {isAviator ? (
         <>
@@ -292,7 +292,7 @@ function LateralSilhouette({ stroke, strokeWidth, dashArray, frameShape }: Silho
   const lensRx = Math.min(rx, 18)
 
   return (
-    <g className="transition-all duration-300">
+    <g className="transition-all duration-base">
       {/* Lens profile */}
       <rect
         x="100" y="115" width="90" height="70" rx={lensRx}
@@ -335,7 +335,7 @@ function PerspectiveSilhouette({ stroke, strokeWidth, dashArray, frameShape }: S
   const farRy = Math.max(ry - 6, 6)
 
   return (
-    <g className="transition-all duration-300">
+    <g className="transition-all duration-base">
       {/* Near lens (larger, left) */}
       <rect
         x="70" y="110" width="105" height="75" rx={nearRx} ry={nearRy}
@@ -376,7 +376,7 @@ function ClosedSilhouette({ stroke, strokeWidth, dashArray, frameShape }: Silhou
   const lensRx = Math.min(rx, 16)
 
   return (
-    <g className="transition-all duration-300">
+    <g className="transition-all duration-base">
       {/* Frame front (top-down view — narrower) */}
       <rect
         x="100" y="130" width="200" height="40" rx={lensRx}
@@ -427,7 +427,7 @@ function ClosedSilhouette({ stroke, strokeWidth, dashArray, frameShape }: Silhou
 /** Detail/macro view: focus zone with magnification indicator */
 function DetailSilhouette({ stroke, strokeWidth, dashArray }: SilhouetteProps) {
   return (
-    <g className="transition-all duration-300">
+    <g className="transition-all duration-base">
       {/* Circular focus zone */}
       <circle
         cx="200" cy="150" r="70"

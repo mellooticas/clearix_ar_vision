@@ -91,7 +91,7 @@ export function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
         </button>
 
         <div className="min-w-0">
-          <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">Clearix</p>
+          <p className="text-micro font-medium uppercase tracking-wider text-muted-foreground">Clearix</p>
           <h1 className="truncate text-sm font-semibold text-foreground sm:text-base">{meta.label}</h1>
         </div>
       </div>
@@ -109,14 +109,14 @@ export function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
             <p className="truncate text-sm font-semibold text-foreground flex items-center gap-1.5">
               {userName}
               {isSuperUser && (
-                <span className="inline-flex items-center rounded-full bg-primary/15 px-1.5 py-0.5 text-[10px] font-bold text-primary ring-1 ring-inset ring-primary/30">
+                <span className="inline-flex items-center rounded-full bg-primary/15 px-1.5 py-0.5 text-micro font-bold text-primary ring-1 ring-inset ring-primary/30">
                   SA
                 </span>
               )}
             </p>
             <p className="truncate text-xs text-muted-foreground">{userRoleLabel}</p>
           </div>
-          <ChevronDown className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${menuOpen ? 'rotate-180' : ''}`} />
+          <ChevronDown className={`h-4 w-4 text-muted-foreground transition-transform duration-base ${menuOpen ? 'rotate-180' : ''}`} />
         </button>
 
         {menuOpen && (
@@ -125,7 +125,7 @@ export function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
               <p className="text-sm font-semibold text-foreground">{userName}</p>
               <p className="mt-0.5 text-xs text-primary">{userRoleLabel}</p>
               {tenantName && (
-                <p className="mt-0.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">{tenantName}</p>
+                <p className="mt-0.5 text-micro font-bold uppercase tracking-wider text-muted-foreground">{tenantName}</p>
               )}
             </div>
 

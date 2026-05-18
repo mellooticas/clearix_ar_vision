@@ -291,7 +291,7 @@ export default function FotosArmacoesPage() {
             {/* Resolution indicator */}
             {videoRef.current && (
               <div className="absolute bottom-3 right-3 rounded bg-black/40 px-2 py-0.5">
-                <p className="text-[10px] text-white/50 font-mono">
+                <p className="text-micro text-white/50 font-mono">
                   {videoRef.current.videoWidth}x{videoRef.current.videoHeight}
                 </p>
               </div>
@@ -350,7 +350,7 @@ export default function FotosArmacoesPage() {
                   )}
                   <div className="flex items-center gap-1">
                     {required && <Star className="h-2 w-2 text-warning fill-warning" />}
-                    <span className="text-[10px] font-medium">{ANGLE_LABELS[angle]}</span>
+                    <span className="text-micro font-medium">{ANGLE_LABELS[angle]}</span>
                   </div>
                 </button>
               )
@@ -361,7 +361,7 @@ export default function FotosArmacoesPage() {
           {frameCapture.isUploading && (
             <div className="w-full bg-muted rounded-full h-2">
               <div
-                className="bg-primary h-2 rounded-full transition-all duration-300"
+                className="bg-primary h-2 rounded-full transition-all duration-base"
                 style={{ width: `${frameCapture.uploadProgress}%` }}
               />
             </div>
