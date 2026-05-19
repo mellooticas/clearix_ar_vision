@@ -230,7 +230,6 @@ export function AppSidebar() {
             <div>
               <p className="text-micro font-semibold uppercase tracking-[0.15em] opacity-50">{APP_KICKER}</p>
               <p className="text-lg font-black tracking-tight">{APP_TITLE}</p>
-              <PoweredByDigiai className="mt-0.5" />
             </div>
           )}
         </Link>
@@ -279,6 +278,7 @@ export function AppSidebar() {
             </div>
           )}
         </div>
+        {!isCollapsed && <PoweredByDigiai className="px-3 pt-1" />}
       </div>
     </div>
   )

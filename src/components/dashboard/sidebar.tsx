@@ -135,7 +135,6 @@ export function DashboardSidebar({ open = false, onClose }: DashboardSidebarProp
               <div>
                 <p className="text-micro font-semibold uppercase tracking-[0.15em] opacity-50">Clearix</p>
                 <p className="text-lg font-black tracking-tight">AR &amp; Vision</p>
-                <PoweredByDigiai className="mt-0.5" />
               </div>
             )}
           </div>
@@ -238,6 +237,7 @@ export function DashboardSidebar({ open = false, onClose }: DashboardSidebarProp
               </div>
             )}
           </div>
+          {!collapsed && <PoweredByDigiai className="px-3 pt-1" />}
         </div>
       </div>
     )
