@@ -10,6 +10,26 @@ import {
   SSO_TICKET_PARAM,
 } from '@/lib/auth/sso'
 
+/**
+ * Headers anti-cache canonicos (C11).
+ * Aplicar em TODAS as responses que carregam estado do user — redirects de
+ * login e de permissao inclusive. Sem isso o CDN pode servir a um usuario o
+ * redirect gerado para outro.
+ */
+const NO_CACHE_HEADERS: Record<string, string> = {
+  'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0',
+  'Netlify-CDN-Cache-Control': 'no-store',
+  'CDN-Cache-Control': 'no-store',
+  'Vary': 'Cookie',
+}
+
+function withNoCache(response: NextResponse): NextResponse {
+  Object.entries(NO_CACHE_HEADERS).forEach(([key, value]) => {
+    response.headers.set(key, value)
+  })
+  return response
+}
+
 function gatewayNotConfiguredResponse() {
   return new NextResponse(
     'Clearix Hub nao configurado. Defina NEXT_PUBLIC_SIS_GATEWAY_URL.',
@@ -149,7 +169,7 @@ export async function middleware(request: NextRequest) {
     const appNext = `${pathname}${request.nextUrl.search}`
     const ssoUrl = buildGatewayLoginRedirect(request, appNext)
     if (!ssoUrl) return gatewayNotConfiguredResponse()
-    return NextResponse.redirect(ssoUrl)
+    return withNoCache(NextResponse.redirect(ssoUrl))
   }
 
   if (user && isProtectedRoute && !(await podeUsarApp(supabase))) {
@@ -157,13 +177,15 @@ export async function middleware(request: NextRequest) {
     // quem tiver acesso legitimo volta pelo SSO com a permissao corrigida.
     const hub = getGatewayUrl()
 
-    return NextResponse.redirect(
-      hub ? new URL('/', hub) : new URL('/login?error=sem_permissao', request.url)
+    return withNoCache(
+        NextResponse.redirect(
+          hub ? new URL('/', hub) : new URL('/login?error=sem_permissao', request.url)
+        )
     )
   }
 
   if (user && pathname === '/login') {
-    return NextResponse.redirect(new URL('/dashboard', request.url))
+    return withNoCache(NextResponse.redirect(new URL('/dashboard', request.url)))
   }
 
   if (isProtectedRoute) {
@@ -190,7 +212,7 @@ async function handleSSOCallback(request: NextRequest): Promise<NextResponse> {
       const loginUrl = new URL('/login', request.url)
       loginUrl.searchParams.set('error', 'ticket_exchange_failed')
       loginUrl.searchParams.set('next', next)
-      return NextResponse.redirect(loginUrl)
+      return withNoCache(NextResponse.redirect(loginUrl))
     }
 
     accessToken = exchangedSession.accessToken
@@ -201,7 +223,7 @@ async function handleSSOCallback(request: NextRequest): Promise<NextResponse> {
   if (!accessToken || !refreshToken) {
     const ssoUrl = buildGatewayLoginRedirect(request, SSO_DEFAULT_NEXT)
     if (!ssoUrl) return gatewayNotConfiguredResponse()
-    return NextResponse.redirect(ssoUrl)
+    return withNoCache(NextResponse.redirect(ssoUrl))
   }
 
   const redirectTo = next
@@ -246,7 +268,7 @@ async function handleSSOCallback(request: NextRequest): Promise<NextResponse> {
     const loginUrl = new URL('/login', request.url)
     loginUrl.searchParams.set('error', 'session_failed')
     loginUrl.searchParams.set('next', next)
-    return NextResponse.redirect(loginUrl)
+    return withNoCache(NextResponse.redirect(loginUrl))
   }
 
   return response
