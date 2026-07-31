@@ -61,6 +61,33 @@ async function exchangeSsoTicket(ticket: string) {
   }
 }
 
+type SupabaseMiddlewareClient = ReturnType<typeof createServerClient>
+
+/**
+ * Portao de acesso ao app. A decisao mora no banco, nao aqui.
+ *
+ * rpc_iam_can_use_app_feature encadeia camada comercial (pacote do tenant, que
+ * o digiai libera) -> usuario ativo -> papel (o Hub grava em
+ * iam.roles_permissions -> apps.clearix_ar_vision.access). Sem p_feature, a rotina
+ * responde so "este papel tem o app?".
+ *
+ * Ate aqui o middleware conferia apenas sessao: qualquer pessoa logada no
+ * ecossistema entrava por URL direta, mesmo com o app desligado para o papel
+ * dela no Hub. O interruptor do Hub filtrava so o lancador.
+ *
+ * Falha de leitura NAO libera: portao que abre no erro nao e portao (R-037).
+ */
+async function podeUsarApp(supabase: SupabaseMiddlewareClient): Promise<boolean> {
+  try {
+    const { data } = await supabase.rpc('rpc_iam_can_use_app_feature', {
+      p_app_key: SSO_APP_KEY,
+    })
+    return data === true
+  } catch {
+    return false
+  }
+}
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
@@ -123,6 +150,16 @@ export async function middleware(request: NextRequest) {
     const ssoUrl = buildGatewayLoginRedirect(request, appNext)
     if (!ssoUrl) return gatewayNotConfiguredResponse()
     return NextResponse.redirect(ssoUrl)
+  }
+
+  if (user && isProtectedRoute && !(await podeUsarApp(supabase))) {
+    // Devolve ao Hub em vez de mostrar tela vazia. Nao e bloqueio definitivo:
+    // quem tiver acesso legitimo volta pelo SSO com a permissao corrigida.
+    const hub = getGatewayUrl()
+
+    return NextResponse.redirect(
+      hub ? new URL('/', hub) : new URL('/login?error=sem_permissao', request.url)
+    )
   }
 
   if (user && pathname === '/login') {
