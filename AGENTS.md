@@ -134,3 +134,11 @@ Prova virtual de armações (Realidade Aumentada) + medição digital (pupilomet
 - **Owner deste arquivo:** quem mantém AR Vision
 
 > Em caso de dúvida, **pause e pergunte ao humano**. AR Vision usa câmera do cliente — LGPD nível alto + UX delicada.
+
+## Hospedagem e variáveis (R-042 §4 — desde 23/09/2026)
+
+- **Onde roda:** Cloudflare Worker `clearix-arvision` → `https://arvision.clearix.app.br` (custom domain no `wrangler.jsonc`). Netlify (`clearixarvision.netlify.app`) é legado: não configurar nada lá.
+- **Publicar:** `npm run build:cloudflare` com as variáveis públicas no comando (NEXT_PUBLIC_SIS_GATEWAY_URL/NEXT_PUBLIC_GATEWAY_URL = https://app.clearix.app.br, NEXT_PUBLIC_CLEARIX_VENDAS_URL = https://sales.clearix.app.br, NEXT_PUBLIC_SUPABASE_URL/ANON_KEY) e `npx wrangler deploy` na pasta do app. Não há `.env` no repo: sem as variáveis no comando o build sai errado (runbook §20).
+- **Gateway de SSO:** `https://app.clearix.app.br`. Endereço deste app no lançador do Hub vem do banco: `iam.clearix_apps.url_production` (ADR-0060).
+- **Segredos:** `SSO_EXCHANGE_SHARED_SECRET` (valor próprio deste app; o Hub confere `SSO_EXCHANGE_SECRET_CLEARIX_AR_VISION`). Só por `wrangler secret put`, digitado pelo dono; nunca no repo, nunca no chat.
+- **Registro da virada:** `Cockpit/infra/virada-cloudflare-2026-09-23.md`.
