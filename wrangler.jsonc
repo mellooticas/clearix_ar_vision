@@ -1,0 +1,22 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "clearix-arvision",
+	"main": ".open-next/worker.js",
+	"compatibility_date": "2026-01-01",
+	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	"assets": {
+		"binding": "ASSETS",
+		"directory": ".open-next/assets"
+	},
+	// Next 15 via @opennextjs/cloudflare (receita do Loyalty). Segredo unico: SSO_EXCHANGE_SHARED_SECRET (wrangler secret, dono).
+	"keep_names": false,
+	"vars": {
+		"NEXT_PUBLIC_SIS_GATEWAY_URL": "https://app.clearix.app.br",
+		"NEXT_PUBLIC_GATEWAY_URL": "https://app.clearix.app.br",
+		"NEXT_PUBLIC_CLEARIX_VENDAS_URL": "https://sales.clearix.app.br"
+	},
+	"keep_vars": true,
+	// Endereco definitivo (dono, 23/09/2026: "todos dentro do cloudflare da clearix"). O deploy cria o DNS.
+	"routes": [{ "pattern": "arvision.clearix.app.br", "custom_domain": true }],
+	"observability": { "enabled": true }
+}
